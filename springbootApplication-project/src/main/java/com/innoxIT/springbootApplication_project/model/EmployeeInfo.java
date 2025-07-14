@@ -1,8 +1,7 @@
-package com.innoxIT.springbootApplication_project.Employee;
+package com.innoxIT.springbootApplication_project.model;
 
 import jakarta.persistence.*;
 import lombok.Data;
-import org.springframework.data.repository.cdi.Eager;
 
 @Entity
 @Table(name = "employees")

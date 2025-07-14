@@ -1,9 +1,8 @@
-package com.innoxIT.springbootApplication_project;
+package com.innoxIT.springbootApplication_project.controller;
 
-import com.innoxIT.springbootApplication_project.Employee.EmployeeInfo;
-import com.innoxIT.springbootApplication_project.repo.EmployeeRepository;
+import com.innoxIT.springbootApplication_project.model.EmployeeInfo;
+import com.innoxIT.springbootApplication_project.repository.EmployeeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -53,7 +52,7 @@ public class EmployeeController {
 
     @PatchMapping("/employees/{id}")
     public ResponseEntity<EmployeeInfo> simplePatchEmployee(@PathVariable Long id, @RequestBody EmployeeInfo patch) {
-        EmployeeInfo existing = repo.findById(id).get();  // ⚠️ Use `.get()` carefully
+        EmployeeInfo existing = repo.findById(id).get();
 
         if (patch.getName() != null) {
             existing.setName(patch.getName());
