@@ -13,5 +13,5 @@ public class EmployeeInfo {
     private Long id;
     public String name;
     public String department;
-    public Double salary;  //
+    public Double salary;
 }
