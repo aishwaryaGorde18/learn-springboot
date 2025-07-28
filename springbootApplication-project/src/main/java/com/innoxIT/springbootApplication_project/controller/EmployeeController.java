@@ -1,72 +1,69 @@
 package com.innoxIT.springbootApplication_project.controller;
 
 import com.innoxIT.springbootApplication_project.model.EmployeeInfo;
-import com.innoxIT.springbootApplication_project.repository.EmployeeRepository;
+import com.innoxIT.springbootApplication_project.service.EmployeeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
+@RequestMapping("/employees")
 public class EmployeeController {
 
     @Autowired
-    EmployeeRepository repo;
+    private EmployeeService employeeService;
 
-
-    @PostMapping("/addEmployee")
-    public void addEmployee(@RequestBody EmployeeInfo employees) {
-        repo.save(employees);
+    @PostMapping
+    public ResponseEntity<EmployeeInfo> create(@RequestBody EmployeeInfo employee) {
+        return ResponseEntity.ok(employeeService.save(employee));
     }
-
     @PostMapping("/addEmployees")
     public ResponseEntity<String> addEmployees(@RequestBody List<EmployeeInfo> employees) {
-        repo.saveAll(employees);
+        employeeService.saveAll(employees);
         return ResponseEntity.ok(employees.size() + " employees added successfully");
     }
 
-
-    @DeleteMapping("/deleteEmployee/{id}")
-    public String deleteEmployee(@PathVariable Long id) {
-        EmployeeRepository.deleteBy(id);
-        return "Deleted employee with ID: " + id;
+    @GetMapping
+    public ResponseEntity<List<EmployeeInfo>> getAll() {
+        return ResponseEntity.ok(employeeService.getAll());
     }
 
-    @GetMapping("/employees")
-    public List<EmployeeInfo> getAllEmployees() {
-        return repo.findAll();
+    @PutMapping("/{id}")
+    public ResponseEntity<EmployeeInfo> update(@PathVariable Long id, @RequestBody EmployeeInfo employee) {
+        return ResponseEntity.ok(employeeService.update(id, employee));
     }
 
-    @PutMapping("/employees/{id}")
-    public EmployeeInfo updateEmployee(@PathVariable Long id, @RequestBody EmployeeInfo updatedEmployee) {
-        return repo.findById(id).map(existing ->
-        {
-            existing.setName(updatedEmployee.getName());
-            existing.setDepartment(updatedEmployee.getDepartment());
-            existing.setSalary(updatedEmployee.getSalary());
-            return repo.save(existing);
-        }).orElse(null);
+    @PatchMapping("/{id}")
+    public ResponseEntity<EmployeeInfo> patch(@PathVariable Long id, @RequestBody EmployeeInfo patchData) {
+        Optional<EmployeeInfo> optionalEmployee = employeeService.getById(id);
 
-    }
-
-    @PatchMapping("/employees/{id}")
-    public ResponseEntity<EmployeeInfo> simplePatchEmployee(@PathVariable Long id, @RequestBody EmployeeInfo patch) {
-        EmployeeInfo existing = repo.findById(id).get();
-
-        if (patch.getName() != null) {
-            existing.setName(patch.getName());
-        }
-        if (patch.getDepartment() != null) {
-            existing.setDepartment(patch.getDepartment());
-        }
-        if (patch.getSalary() != 0.0) {
-            existing.setSalary(patch.getSalary());
+        if (optionalEmployee.isEmpty()) {
+            return ResponseEntity.notFound().build();
         }
 
-        EmployeeInfo updated = repo.save(existing);
+        EmployeeInfo existing = optionalEmployee.get();
+
+        // Patch logic: only update if non-null
+        if (patchData.getName() != null) {
+            existing.setName(patchData.getName());
+        }
+        if (patchData.getDepartment() != null) {
+            existing.setDepartment(patchData.getDepartment());
+        }
+        if (patchData.getSalary() != null) {
+            existing.setSalary(patchData.getSalary());
+        }
+
+        EmployeeInfo updated = employeeService.save(existing);
         return ResponseEntity.ok(updated);
     }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> delete(@PathVariable Long id) {
+        employeeService.delete(id);
+        return ResponseEntity.noContent().build();
+    }
 }
-
-

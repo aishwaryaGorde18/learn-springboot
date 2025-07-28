@@ -9,59 +9,43 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
-public abstract class EmployeeServiceImpl implements EmployeeService {
+public class EmployeeServiceImpl implements EmployeeService {
 
     @Autowired
-    private EmployeeRepository repo;
+    private EmployeeRepository employeeRepository;
 
     @Override
-    public void addEmployee(EmployeeInfo employee) {
-        repo.save(employee);
+    public EmployeeInfo save(EmployeeInfo employee) {
+        return employeeRepository.save(employee);
+    }
+    @Override
+    public List<EmployeeInfo> saveAll(List<EmployeeInfo> employees) {
+        return employeeRepository.saveAll(employees);
+    }
+    @Override
+    public List<EmployeeInfo> getAll() {
+        return employeeRepository.findAll();
     }
 
     @Override
-    public void addEmployees(List<EmployeeInfo> employees) {
-        repo.saveAll(employees);
+    public Optional<EmployeeInfo> getById(Long id) {
+        return employeeRepository.findById(id);
     }
 
     @Override
-    public String deleteEmployee(Long id) {
-        repo.deleteById(id);
-        return "Deleted employee with ID: " + id;
+    public EmployeeInfo update(Long id, EmployeeInfo updatedEmployee) {
+        EmployeeInfo existing = employeeRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Employee not found with id: " + id));
+
+        existing.setName(updatedEmployee.getName());
+        existing.setDepartment(updatedEmployee.getDepartment());
+        existing.setSalary(updatedEmployee.getSalary());
+
+        return employeeRepository.save(existing);
     }
 
     @Override
-    public List<EmployeeInfo> getAllEmployees() {
-        return repo.findAll();
+    public void delete(Long id) {
+        employeeRepository.deleteById(id);
     }
-
-    @Override
-    public EmployeeInfo updateEmployee(Long id, EmployeeInfo updatedEmployee) {
-        return repo.findById(id).map(existing -> {
-            existing.setName(updatedEmployee.getName());
-            existing.setDepartment(updatedEmployee.getDepartment());
-            existing.setSalary(updatedEmployee.getSalary());
-            return repo.save(existing);
-        }).orElse(null);
-    }
-
-    @Override
-    public EmployeeInfo patchEmployee(Long id, EmployeeInfo patchData) {
-        Optional<EmployeeInfo> optional = repo.findById(id);
-        if (optional.isEmpty()) return null;
-
-        EmployeeInfo existing = optional.get();
-
-        if (patchData.getName() != null) {
-            existing.setName(patchData.getName());
-        }
-        if (patchData.getDepartment() != null) {
-            existing.setDepartment(patchData.getDepartment());
-        }
-        if (patchData.getSalary() != 0.0) {
-            existing.setSalary(patchData.getSalary());
-        }
-
-        return repo.save(existing);
-}
 }

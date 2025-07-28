@@ -3,19 +3,15 @@ package com.innoxIT.springbootApplication_project.service;
 import com.innoxIT.springbootApplication_project.model.EmployeeInfo;
 
 import java.util.List;
+import java.util.Optional;
 
-public interface EmployeeService
-{
+public interface EmployeeService {
+    EmployeeInfo save(EmployeeInfo employee);
+    List<EmployeeInfo> saveAll(List<EmployeeInfo> employees);
+    List<EmployeeInfo> getAll();
+    EmployeeInfo update(Long id, EmployeeInfo employee);
+    void delete(Long id);
 
-    void addEmployee(EmployeeInfo employee);
+    Optional<EmployeeInfo> getById(Long id);
 
-    void addEmployees(List<EmployeeInfo> employees);
-
-    String deleteEmployee(Long id);
-
-    List<EmployeeInfo> getAllEmployees();
-
-    EmployeeInfo updateEmployee(Long id, EmployeeInfo updatedEmployee);
-
-    EmployeeInfo patchEmployee(Long id, EmployeeInfo patchData);
 }
