@@ -29,3 +29,30 @@
 2025-08-08 13:30:00 [main] INFO  o.s.t.w.s.TestDispatcherServlet - Completed initialization in 15 ms
 2025-08-08 13:30:00 [main] INFO  c.i.s.controller.HelloControllerTest - Started HelloControllerTest in 9.437 seconds (process running for 16.778)
 2025-08-08 13:30:03 [main] WARN  o.s.w.s.m.s.DefaultHandlerExceptionResolver - Resolved [org.springframework.web.bind.MissingServletRequestParameterException: Required request parameter 'name' for method parameter type String is not present]
+2025-08-08 13:47:59 [main] INFO  o.s.t.c.s.AnnotationConfigContextLoaderUtils - Could not detect default configuration classes for test class [com.innoxIT.springbootApplication_project.controller.EmployeeControllerTest]: EmployeeControllerTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2025-08-08 13:48:00 [main] INFO  o.s.b.t.c.SpringBootTestContextBootstrapper - Found @SpringBootConfiguration com.innoxIT.springbootApplication_project.SpringbootApplicationProjectApplication for test class com.innoxIT.springbootApplication_project.controller.EmployeeControllerTest
+2025-08-08 13:48:10 [main] INFO  c.i.s.c.EmployeeControllerTest - Starting EmployeeControllerTest using Java 24.0.1 with PID 1052 (started by LENOVO in C:\Users\LENOVO\Downloads\springbootApplication-project (1)\springbootApplication-project)
+2025-08-08 13:48:10 [main] INFO  c.i.s.c.EmployeeControllerTest - No active profile set, falling back to 1 default profile: "default"
+2025-08-08 13:48:26 [main] INFO  o.s.v.b.OptionalValidatorFactoryBean - Failed to set up a Bean Validation provider: jakarta.validation.NoProviderFoundException: Unable to create a Configuration, because no Jakarta Bean Validation provider could be found. Add a provider like Hibernate Validator (RI) to your classpath.
+2025-08-08 13:48:30 [main] INFO  o.s.b.t.m.w.SpringBootMockServletContext - Initializing Spring TestDispatcherServlet ''
+2025-08-08 13:48:30 [main] INFO  o.s.t.w.s.TestDispatcherServlet - Initializing Servlet ''
+2025-08-08 13:48:30 [main] INFO  o.s.t.w.s.TestDispatcherServlet - Completed initialization in 7 ms
+2025-08-08 13:48:30 [main] INFO  c.i.s.c.EmployeeControllerTest - Started EmployeeControllerTest in 29.435 seconds (process running for 45.721)
+2025-08-08 13:49:01 [main] INFO  o.s.t.c.s.AnnotationConfigContextLoaderUtils - Could not detect default configuration classes for test class [com.innoxIT.springbootApplication_project.controller.EmployeeControllerTest]: EmployeeControllerTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2025-08-08 13:49:01 [main] INFO  o.s.b.t.c.SpringBootTestContextBootstrapper - Found @SpringBootConfiguration com.innoxIT.springbootApplication_project.SpringbootApplicationProjectApplication for test class com.innoxIT.springbootApplication_project.controller.EmployeeControllerTest
+2025-08-08 13:49:04 [main] INFO  c.i.s.c.EmployeeControllerTest - Starting EmployeeControllerTest using Java 24.0.1 with PID 14476 (started by LENOVO in C:\Users\LENOVO\Downloads\springbootApplication-project (1)\springbootApplication-project)
+2025-08-08 13:49:04 [main] INFO  c.i.s.c.EmployeeControllerTest - No active profile set, falling back to 1 default profile: "default"
+2025-08-08 13:49:12 [main] INFO  o.s.v.b.OptionalValidatorFactoryBean - Failed to set up a Bean Validation provider: jakarta.validation.NoProviderFoundException: Unable to create a Configuration, because no Jakarta Bean Validation provider could be found. Add a provider like Hibernate Validator (RI) to your classpath.
+2025-08-08 13:49:13 [main] INFO  o.s.b.t.m.w.SpringBootMockServletContext - Initializing Spring TestDispatcherServlet ''
+2025-08-08 13:49:13 [main] INFO  o.s.t.w.s.TestDispatcherServlet - Initializing Servlet ''
+2025-08-08 13:49:13 [main] INFO  o.s.t.w.s.TestDispatcherServlet - Completed initialization in 8 ms
+2025-08-08 13:49:13 [main] INFO  c.i.s.c.EmployeeControllerTest - Started EmployeeControllerTest in 11.195 seconds (process running for 18.797)
+2025-08-08 14:00:45 [main] INFO  o.s.t.c.s.AnnotationConfigContextLoaderUtils - Could not detect default configuration classes for test class [com.innoxIT.springbootApplication_project.controllerTest.EmployeeV1ControllerTest]: EmployeeV1ControllerTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2025-08-08 14:00:47 [main] INFO  o.s.b.t.c.SpringBootTestContextBootstrapper - Found @SpringBootConfiguration com.innoxIT.springbootApplication_project.SpringbootApplicationProjectApplication for test class com.innoxIT.springbootApplication_project.controllerTest.EmployeeV1ControllerTest
+2025-08-08 14:00:49 [main] INFO  c.i.s.c.EmployeeV1ControllerTest - Starting EmployeeV1ControllerTest using Java 24.0.1 with PID 14180 (started by LENOVO in C:\Users\LENOVO\Downloads\springbootApplication-project (1)\springbootApplication-project)
+2025-08-08 14:00:49 [main] INFO  c.i.s.c.EmployeeV1ControllerTest - No active profile set, falling back to 1 default profile: "default"
+2025-08-08 14:01:00 [main] INFO  o.s.v.b.OptionalValidatorFactoryBean - Failed to set up a Bean Validation provider: jakarta.validation.NoProviderFoundException: Unable to create a Configuration, because no Jakarta Bean Validation provider could be found. Add a provider like Hibernate Validator (RI) to your classpath.
+2025-08-08 14:01:02 [main] INFO  o.s.b.t.m.w.SpringBootMockServletContext - Initializing Spring TestDispatcherServlet ''
+2025-08-08 14:01:02 [main] INFO  o.s.t.w.s.TestDispatcherServlet - Initializing Servlet ''
+2025-08-08 14:01:02 [main] INFO  o.s.t.w.s.TestDispatcherServlet - Completed initialization in 12 ms
+2025-08-08 14:01:02 [main] INFO  c.i.s.c.EmployeeV1ControllerTest - Started EmployeeV1ControllerTest in 14.709 seconds (process running for 23.336)

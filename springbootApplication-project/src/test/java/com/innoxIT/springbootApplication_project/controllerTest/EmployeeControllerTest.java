@@ -1,4 +1,4 @@
-package com.innoxIT.springbootApplication_project.controller;
+package com.innoxIT.springbootApplication_project.controllerTest;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.innoxIT.springbootApplication_project.model.EmployeeInfo;
@@ -20,7 +20,7 @@ import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
-@WebMvcTest(controllers = EmployeeController.class,
+@WebMvcTest(controllers = EmployeeControllerTest.class,
         excludeAutoConfiguration = {
                 org.springframework.boot.autoconfigure.mongo.MongoAutoConfiguration.class,
                 org.springframework.boot.autoconfigure.data.mongo.MongoDataAutoConfiguration.class,
