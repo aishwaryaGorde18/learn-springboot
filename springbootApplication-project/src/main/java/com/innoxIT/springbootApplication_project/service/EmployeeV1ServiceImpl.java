@@ -12,7 +12,7 @@ import java.util.Optional;
 public class EmployeeV1ServiceImpl implements EmployeeV1Service {
 
     @Autowired
-    private EmployeeV1Repository mangoRepo;
+    public EmployeeV1Repository mangoRepo;
 
     @Override
     public EmployeeV1Info save(EmployeeV1Info employee) {

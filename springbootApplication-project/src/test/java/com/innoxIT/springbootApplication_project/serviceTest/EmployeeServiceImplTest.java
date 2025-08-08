@@ -12,7 +12,7 @@ import java.util.*;
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;
 
-class EmployeeServiceTest {
+class EmployeeServiceImplTest {
 
     @Mock
     private EmployeeRepository employeeRepository;
