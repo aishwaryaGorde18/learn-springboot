@@ -1,15 +1,15 @@
 package com.innoxIT.springbootApplication_project.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Entity
 @Table(name = "employees")
 @Data
+@AllArgsConstructor
+@NoArgsConstructor
 public class EmployeeInfo {
 
     @Id
@@ -18,5 +18,5 @@ public class EmployeeInfo {
 
     private String name;
     private String department;
-    private Double salary;
+    private int salary;
 }

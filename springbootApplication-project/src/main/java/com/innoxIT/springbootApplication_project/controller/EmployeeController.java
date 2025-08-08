@@ -53,7 +53,7 @@ public class EmployeeController {
         if (patchData.getDepartment() != null) {
             existing.setDepartment(patchData.getDepartment());
         }
-        if (patchData.getSalary() != null) {
+        if (false) {
             existing.setSalary(patchData.getSalary());
         }
 

@@ -1,7 +1,7 @@
 package com.innoxIT.springbootApplication_project.controller;
 
-import com.innoxIT.springbootApplication_project.model.Mongo.EmployeeInfoMongo;
-import com.innoxIT.springbootApplication_project.service.EmployeeServiceMongo;
+import com.innoxIT.springbootApplication_project.model.EmployeeV1Info;
+import com.innoxIT.springbootApplication_project.service.EmployeeV1Service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -14,45 +14,45 @@ import java.util.Optional;
 public class EmployeeV1Controller {
 
     @Autowired
-    private EmployeeServiceMongo mangoService;
+    private EmployeeV1Service mangoService;
 
     @PostMapping
-    public ResponseEntity<EmployeeInfoMongo> create(@RequestBody EmployeeInfoMongo employee) {
+    public ResponseEntity<EmployeeV1Info> create(@RequestBody EmployeeV1Info employee) {
         return ResponseEntity.ok(mangoService.save(employee));
     }
 
     @PostMapping("/addEmployees")
-    public ResponseEntity<String> addEmployees(@RequestBody List<EmployeeInfoMongo> employees) {
+    public ResponseEntity<String> addEmployees(@RequestBody List<EmployeeV1Info> employees) {
         mangoService.saveAll(employees);
         return ResponseEntity.ok(employees.size() + " employees added successfully");
     }
 
     @GetMapping
-    public ResponseEntity<List<EmployeeInfoMongo>> getAll() {
+    public ResponseEntity<List<EmployeeV1Info>> getAll() {
         return ResponseEntity.ok(mangoService.getAll());
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<EmployeeInfoMongo> getById(@PathVariable String id) {
+    public ResponseEntity<EmployeeV1Info> getById(@PathVariable String id) {
         return mangoService.getById(id)
                 .map(ResponseEntity::ok)
                 .orElse(ResponseEntity.notFound().build());
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<EmployeeInfoMongo> update(@PathVariable String id, @RequestBody EmployeeInfoMongo employee) {
+    public ResponseEntity<EmployeeV1Info> update(@PathVariable String id, @RequestBody EmployeeV1Info employee) {
         return ResponseEntity.ok(mangoService.update(id, employee));
     }
 
     @PatchMapping("/{id}")
-    public ResponseEntity<EmployeeInfoMongo> patch(@PathVariable String id, @RequestBody EmployeeInfoMongo patchData) {
-        Optional<EmployeeInfoMongo> optional = mangoService.getById(id);
+    public ResponseEntity<EmployeeV1Info> patch(@PathVariable String id, @RequestBody EmployeeV1Info patchData) {
+        Optional<EmployeeV1Info> optional = mangoService.getById(id);
 
         if (optional.isEmpty()) {
             return ResponseEntity.notFound().build();
         }
 
-        EmployeeInfoMongo existing = optional.get();
+        EmployeeV1Info existing = optional.get();
 
         if (patchData.getName() != null) {
             existing.setName(patchData.getName());
@@ -64,7 +64,7 @@ public class EmployeeV1Controller {
             existing.setSalary(patchData.getSalary());
         }
 
-        EmployeeInfoMongo updated = mangoService.save(existing);
+        EmployeeV1Info updated = mangoService.save(existing);
         return ResponseEntity.ok(updated);
     }
 

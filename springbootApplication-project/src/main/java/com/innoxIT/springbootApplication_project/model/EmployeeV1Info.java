@@ -1,7 +1,6 @@
-package com.innoxIT.springbootApplication_project.model.Mongo;
+package com.innoxIT.springbootApplication_project.model;
 
 import lombok.Data;
-import org.springframework.data.annotation.CreatedBy;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.annotation.LastModifiedDate;
@@ -11,7 +10,7 @@ import java.util.Date;
 
 @Document(collection = "employees")
 @Data
-public class EmployeeInfoMongo {
+public class EmployeeV1Info {
 
     @Id
     private String id;
